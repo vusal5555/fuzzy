@@ -11,22 +11,22 @@ LR.registerBlocks(LR);
 
 const UploadCareButton = ({ onUpload }: Props) => {
   const router = useRouter();
-  const ctxProviderRef = useRef<
-    typeof LR.UploadCtxProvider.prototype & LR.UploadCtxProvider
-  >(null);
+  // const ctxProviderRef = useRef<
+  //   typeof LR.UploadCtxProvider.prototype & LR.UploadCtxProvider
+  // >(null);
 
-  useEffect(() => {
-    const handleUpload = async (e: any) => {
-      const file = await onUpload(e.detail.cdnUrl);
-      if (file) {
-        router.refresh();
-      }
-    };
-    ctxProviderRef.current.addEventListener(
-      "file-upload-success",
-      handleUpload
-    );
-  }, []);
+  // useEffect(() => {
+  //   const handleUpload = async (e: any) => {
+  //     const file = await onUpload(e.detail.cdnUrl);
+  //     if (file) {
+  //       router.refresh();
+  //     }
+  //   };
+  //   ctxProviderRef.current.addEventListener(
+  //     "file-upload-success",
+  //     handleUpload
+  //   );
+  // }, []);
 
   return (
     <div>
@@ -37,7 +37,7 @@ const UploadCareButton = ({ onUpload }: Props) => {
         css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.35.2/web/lr-file-uploader-regular.min.css`}
       />
 
-      <lr-upload-ctx-provider ctx-name="my-uploader" ref={ctxProviderRef} />
+      <lr-upload-ctx-provider ctx-name="my-uploader" />
     </div>
   );
 };
